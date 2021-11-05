@@ -8,8 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CellDelegate {
-    
     // MARK: OUTLETS
+
     @IBOutlet var addChildButton: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var ageTextField: CustomTextField!
@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
 
         // MARK: Table View set
+
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -31,6 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     // MARK: Настройка UI
+
     func setUI() {
         addChildButton.layer.cornerRadius = 20
         addChildButton.layer.borderWidth = 3
@@ -42,6 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     // MARK: Функция для удаления ячейки по нажатию кнопки в ней.
+
     func didPressButtonFor(cell: TableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         childCount -= 1
@@ -54,12 +57,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        cell.delegate = self
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell
+        cell?.delegate = self
+        return cell ?? UITableViewCell()
     }
 
     // MARK: Добавление ячейки по нажатию кнопки
+
     @IBAction func addChildren(_ sender: Any) {
         let indexPath = IndexPath(row: childCount, section: 0)
         tableView.beginUpdates()
@@ -77,6 +81,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     // MARK: Очистка всего модуля
+
     @IBAction func clearAll(_ sender: Any) {
         alert = UIAlertController(title: "Подтвердите действие", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Сбросить данные", style: .destructive, handler: { _ in

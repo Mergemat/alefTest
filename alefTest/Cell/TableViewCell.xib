@@ -48,10 +48,10 @@
     </objects>
     <designables>
         <designable name="Ccj-L2-BNl">
-            <size key="intrinsicContentSize" width="69" height="23.333333333333332"/>
+            <size key="intrinsicContentSize" width="33" height="34"/>
         </designable>
         <designable name="ri8-7C-uk6">
-            <size key="intrinsicContentSize" width="35.333333333333336" height="23.333333333333332"/>
+            <size key="intrinsicContentSize" width="33" height="34"/>
         </designable>
     </designables>
 </document>
